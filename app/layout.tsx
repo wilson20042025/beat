@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LUXBEATZ - SONIC ARCHIVE",
-  description: "A DECONSTRUCTED COLLECTION OF INDUSTRIAL TEXTURES, RAW ANALOG SIGNALS, AND HARMONIC DISTORTION. CREATED BY LUXBEATZ.",
+  title: "LUXBEATZ - Healing Your Pain Through Music",
+  description: "A Liberian Based beats & music producer. Transforming the sound of Liberia",
 };
 
 export default function RootLayout({
