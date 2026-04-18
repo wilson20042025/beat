@@ -1,26 +1,137 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-tertiary-fixed-dim: #474747;
+  --color-secondary-fixed-dim: #ababab;
+  --color-inverse-primary: #5d5f5f;
+  --color-tertiary: #e4e2e1;
+  --color-surface-container: #1f1f1f;
+  --color-primary-fixed-dim: #454747;
+  --color-on-primary: #1a1c1c;
+  --color-surface: #131313;
+  --color-secondary-fixed: #c7c6c6;
+  --color-primary-container: #d4d4d4;
+  --color-surface-variant: #353535;
+  --color-on-tertiary-fixed: #ffffff;
+  --color-on-tertiary-container: #000000;
+  --color-on-secondary: #1b1c1c;
+  --color-on-secondary-container: #e3e2e2;
+  --color-outline: #919191;
+  --color-on-primary-container: #000000;
+  --color-on-primary-fixed-variant: #e2e2e2;
+  --color-outline-variant: #474747;
+  --color-on-secondary-fixed-variant: #3b3b3c;
+  --color-inverse-on-surface: #303030;
+  --color-error: #ffb4ab;
+  --color-surface-bright: #393939;
+  --color-on-tertiary: #1b1c1c;
+  --color-on-error-container: #ffdad6;
+  --color-tertiary-container: #929090;
+  --color-on-error: #690005;
+  --color-secondary: #c7c6c6;
+  --color-surface-tint: #c6c6c7;
+  --color-surface-container-low: #1b1b1b;
+  --color-on-secondary-fixed: #1b1c1c;
+  --color-on-surface: #e2e2e2;
+  --color-primary-fixed: #5d5f5f;
+  --color-surface-dim: #131313;
+  --color-surface-container-highest: #353535;
+  --color-background: #131313;
+  --color-inverse-surface: #e2e2e2;
+  --color-secondary-container: #464747;
+  --color-on-background: #e2e2e2;
+  --color-on-tertiary-fixed-variant: #e4e2e1;
+  --color-surface-container-high: #2a2a2a;
+  --color-primary: #ffffff;
+  --color-on-surface-variant: #c6c6c6;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-error-container: #93000a;
+  --color-on-primary-fixed: #ffffff;
+  --color-tertiary-fixed: #5f5e5e;
+
+  --font-headline: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+  --font-label: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+
+  --radius-DEFAULT: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-full: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #131313;
+  --foreground: #e2e2e2;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  cursor: crosshair;
+  min-height: max(884px, 100dvh);
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.debug-grid {
+  background-size: 40px 40px;
+  background-image: radial-gradient(circle, #353535 1px, transparent 1px);
+}
+
+.binary-flash:hover {
+  background-color: #ffffff !important;
+  color: #131313 !important;
+}
+
+@keyframes waveform {
+  0%, 100% { height: 10%; }
+  50% { height: 100%; }
+}
+
+@keyframes flicker {
+  0% { opacity: 0.1; }
+  5% { opacity: 0.7; }
+  10% { opacity: 0.3; }
+  15% { opacity: 0.9; }
+  20% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.glitch-text {
+  text-shadow: 2px 0 #ff00ea, -2px 0 #00ffff;
+  animation: flicker 0.2s infinite;
 }
